@@ -1,0 +1,96 @@
+
+
+<script src="https://kit.fontawesome.com/1dcc6a1da6.js" crossorigin="anonymous"></script>
+
+
+<app-navbar></app-navbar>
+
+
+<body>
+  <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-md-2 sidebar">
+
+       <app-sidebar></app-sidebar>
+
+        </div>
+
+        <div class="col-md-3" >
+
+          <div class="card" id="card-table">
+            <div class="card-header">
+              Cadastro
+            </div>
+            <form>
+
+              <div class="form-group">
+                <label for="">Color</label>
+                <input type="text" [(ngModel)]="deviceColor" name="deviceColor"   class="form-control cMarca">
+              </div>
+
+              <div class="form-group">
+                <label for="">Partnumber</label>
+                <input type="text" [(ngModel)]="devicePartnumber" name="devicePartnumber"  class="form-control cAno" >
+              </div>
+
+
+              <div class="form-group">
+                <label for="">Category</label>
+                <select name="deviceCategory" id="deviceCategory" [(ngModel)]="deviceCategory"  class="form-control">
+                  <option *ngFor="let category of categories" value="{{category.id}}">{{category.name}}</option>
+                </select>
+              </div>
+
+              <div class="card-footer">
+                <button type="button" (click)="onCreateDevice()"  class="btn btn-secondary btnSalvar" >Cadastrar</button>
+              </div>
+            </form>
+          </div>
+
+
+
+
+        </div>
+
+        <div class="col-md-6">
+
+
+          <div class="card" id="card-table">
+            <div class="card-header">
+              Devices
+            </div>
+
+            <table class="table">
+              <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Color</th>
+                <th scope="col">Partnumber</th>
+                <th scope="col">CategoryId</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+              <tbody id="conteudo-tabela">
+
+                <tr *ngFor="let device of devices" >
+                  <td>{{device.id}}</td>
+                  <td>{{device.color}}</td>
+                  <td>{{device.partnumber}}</td>
+                  <td>{{device.category.name}}</td>
+                  <td><button type="button" class="btn btn-danger btnRemover"   (click)="onDeleteDevice(device.id)">Remove</button> </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+
+  </div>
+
+
+
+</body>
+

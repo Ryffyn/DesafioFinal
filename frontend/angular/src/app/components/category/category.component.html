@@ -1,0 +1,75 @@
+
+<app-navbar></app-navbar>
+
+<body>
+  <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-md-2 sidebar">
+
+          <app-sidebar></app-sidebar>
+
+
+        </div>
+
+        <div class="col-md-3" >
+
+          <div class="card" style="margin-top:20px;">
+            <div class="card-header">
+              Cadastro
+            </div>
+            <form>
+
+              <div class="form-group">
+                <label for="">Category</label>
+                <input type="text" [(ngModel)]="categoryName" name="deviceCategory" class="form-control cCor">
+              </div>
+
+              <div class="card-footer">
+                <button type="button" (click)="onCreateCategory()"  class="btn btn-secondary btnSalvar" >Cadastrar</button>
+              </div>
+            </form>
+          </div>
+
+
+
+
+        </div>
+
+        <div class="col-md-6">
+
+
+          <div class="card" id="card-table">
+            <div class="card-header">
+              Categories
+            </div>
+
+            <table class="table">
+              <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+              <tbody id="conteudo-tabela">
+
+                <tr *ngFor="let category of categories" >
+                  <td>{{category.id}}</td>
+                  <td>{{category.name}}</td>
+                  <td><button type="button" class="btn btn-danger btnRemover"   (click)="onDeleteCategory(category.id)">Remove</button> </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+
+
+  </div>
+
+
+
+</body>
+
